@@ -1,0 +1,117 @@
+.name {
+    color: black;
+}
+
+.main_text {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.inx {
+    border-radius: 1;
+}
+
+.main_title {
+    font-size: 4.5rem;
+}
+
+.main_desc {
+    font-size: 2rem;
+}
+
+.my {
+    background-image: url(images/newbanner.webp);
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+
+.item.social>a {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+    margin: 0 8px;
+    color: rgb(0, 0, 0);
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.box {
+    background-color: rgb(218, 248, 248);
+    box-shadow: 0px 4px 8px 0px rgb(0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-items: center;
+}
+
+.item.social>a:hover {
+    opacity: 0.5;
+}
+
+.item.social {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+footer li {
+    padding: 0 10px;
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+footer ul a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    opacity: 1;
+}
+
+footer ul a:hover {
+    opacity: 1;
+}
+
+footer .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 0;
+}
+
+.imageAboutPage {
+    width: 100%;
+}
+
+#contact,
+#about {
+    margin-top: 4rem;
+    padding-top: 4rem;
+}
+
+#contact {
+    padding-bottom: 4rem;
+}
+
+.navbarScroll.navbarDark {
+    background-color: black;
+}
+

@@ -1,0 +1,123 @@
+document
+  .querySelector("form.pure-form")
+  .addEventListener("submit", function (e) {
+    // to prevent
+    e.preventDefault();
+
+    // to get date and time
+    var today = new Date();
+    var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    var time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+
+    // to get input values
+    var firstname = document.getElementById("first-name").value;
+    var lastname = document.getElementById("last-name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    var input_message = document.getElementById("message").value;
+    var message = input_message.replace(/(\r\n|\n|\r|\n|\t)/gm, " "); //remove those line breaks for textarea
+
+    if (firstname === "") {
+      alert( "Invalid name");
+      // return false;
+    } else if (firstname.length < 2) {
+      alert("Invalid name");
+      // return false;
+    } else if(lastname ===""){
+        alert( "Invalid name");
+        // return false;
+    } else if(lastname.length < 2){
+        alert("Invalid name");
+      // return false;
+    } else if(email === ""){
+        alert("Invalid email");
+      // return false;
+    } else if(email.length < 2){
+        alert("Invalid email");
+      // return false;
+    } else if (phone ===""){
+        alert("Invalid phone");
+      // return false;
+    } else if(phone.length < 2){
+        alert("Invalid phone");
+      // return false;
+    }else if (message === "") {
+      alert("Invalid message");
+      // return false;
+    } else if (message.length < 2) {
+      alert("Invalid message");
+      // return false;
+    } else {
+        var send_message = "Hey Owais, you have a contact detail from a new client!!!%0A%0A" + 
+            "<b>First Name:</b> " + firstname + 
+            "<b>last Name:</b> " + lastname +
+            "<b>email:</b> " + email +
+            "<b>phone:</b> " + phone +
+            "%0A<b>Message:</b> " + message + 
+            "%0A<b>Date:</b> " + date + 
+            "%0A<b>Time:</b> " + time;
+
+      // declearing bot token and chat id
+      var bot_token = "5882624500:AAEOOeDMO4QJOjuFEi4vPA0jABvubiv4Ppc"; // bot token
+      var chat_id = 1330422411; // my chat id
+
+      // creating url using bot token, chat id and message
+      var url =
+        "https://api.telegram.org/bot" +
+        bot_token +
+        "/sendMessage?chat_id=" +
+        chat_id +
+        "&text=" +
+        send_message +
+        "&parse_mode=html";
+
+      // creating request
+      var xhttp = new XMLHttpRequest();
+      
+      // loading status
+      var loadingMsg = document.getElementById("loading-message");
+      var sentMsg = document.getElementById("sent-message");
+      var errorMsg = document.getElementById("error-message");
+
+      sentMsg.style.display = "none";
+      errorMsg.style.display = "none";
+      loadingMsg.style.display = "block";
+
+      // send a request
+      xhttp.open("GET", url, true);
+      xhttp.send();
+
+      // response message
+      xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+          // printing the responses on console
+          console.log("xhttp.readyState=", xhttp.readyState);
+          console.log("xhttp.status=", xhttp.status);
+          console.log("response=", xhttp.responseText);
+
+          // storing the responses
+          var data = JSON.parse(xhttp.responseText);
+          var uploadResult = data["ok"];
+          console.log("uploadResult=", uploadResult);
+
+          // conditions to show response messages
+          if (uploadResult === true) {
+            loadingMsg.style.display = "none";
+            sentMsg.style.display = "block";
+            errorMsg.style.display ="none";
+            console.log("successfully uploaded file");
+          } else {
+            loadingMsg.style.display = "none";
+            errorMsg.style.display = "block";
+            sentMsg.style.display = "none";
+            console.log("failed to upload file");
+          }
+        } else {
+            loadingMsg.style.display = "none";
+            errorMsg.style.display = "block";
+            sentMsg.style.display = "none";
+            console.log("failed to upload file");
+          }
+      };
+    }
+  });
